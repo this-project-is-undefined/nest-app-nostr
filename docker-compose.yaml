@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+
+  mysql:
+    container_name: mycontainername
+    image: mysql/mysql-server:8.0.23
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+    command: --lower_case_table_names=1
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  mysql:
+  redis:
