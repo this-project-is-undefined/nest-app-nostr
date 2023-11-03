@@ -1,7 +1,10 @@
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn('uuid', { name: 'id' })
-  id: number;
+  public id: number;
+
+  @Column({ name: 'npub', type: 'varchar', length: 255 })
+  public npub: string;
 }
